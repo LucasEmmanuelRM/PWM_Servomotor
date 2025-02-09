@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
-#include "pico/stdlib.h"
 #include "hardware/pwm.h"
 
 #define PWM_PIN 22  // 11, 12 ou 13 para LED RGB da BitDogLab ou 22 para servo motor na simulação
 
+// Fpwm = Fclock / (wrap_period * pwm_div) = 50 Hz
+
 const uint16_t wrap_period = 25000; // Valor máximo do contador - WRAP (Pode ir de 1 a 65535)
 const float pwm_div = 100.0;        // Divisor do clock para o PWM (Pode ir de 1,0 a 255,9)
-const uint16_t dc_step = 6;       // Passo de incremento/decremento para o duty cycle do LED
+const uint16_t dc_step = 6;         // Passo de incremento/decremento para o duty cycle do LED ou servo motor
 uint16_t duty_cycle = 3000;         // Nível inicial do pwm
 
 void inicializar_PWM();
